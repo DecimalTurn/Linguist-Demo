@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 env:
   REPO: pulibrary/ExcelAlmaLookup  # Define the repository here
-  OPTIONS: ''       # Define the options for Linguist here
+  OPTIONS: '--breakdown'       # Define the options for Linguist here
 
 # other to check: mckryton/senfgurke
 
