@@ -2,13 +2,9 @@ name: Run Linguist
 
 on: workflow_dispatch
 
-inputs:
-  repo:
-    description: 'Org1/Repo1 for the repo we need to inspect.'
-    required: true
-  options:
-    description: 'Options when running Linguist.'
-    default: ''
+env:
+  REPO: Org1/Repo1  # Define the repository here
+  OPTIONS: ''       # Define the options for Linguist here
 
 jobs:
   run-linguist:
@@ -22,15 +18,16 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ inputs.repo }}
+          repository: ${{ env.REPO }}
           ref: refs/heads/release
 
       - name: Run Linguist
         run: |
-          repo_name=$(basename ${{ inputs.repo }})
+          repo_name=$(basename ${{ env.REPO }})
           cd $repo_name
-          github-linguist ${{ inputs.options }}
+          github-linguist ${{ env.OPTIONS }}
         shell: bash
+
 
     # - name: Checkout Linguist
     #   uses: actions/checkout@v4
