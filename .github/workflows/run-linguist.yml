@@ -8,7 +8,7 @@ env:
 
 jobs:
   run-linguist:
-    name: Run Linguist on ${{ env.REPO }}
+    name: Run Linguist
     runs-on: ubuntu-latest
     steps:
       - name: Install Linguist
@@ -21,7 +21,9 @@ jobs:
           repository: ${{ env.REPO }}
 
       - name: Run Linguist
-        run: github-linguist ${{ env.OPTIONS }}
+        run: |
+          echo ${{ env.REPO }}
+          github-linguist ${{ env.OPTIONS }}
         shell: bash
 
 
