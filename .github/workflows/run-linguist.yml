@@ -1,0 +1,42 @@
+name: Run Linguist
+
+on: workflow_dispatch
+
+inputs:
+  repo:
+    description: 'Org1/Repo1 for the repo we need to inspect.'
+    required: true
+  options:
+    description: 'Options when running Linguist.'
+    default: ''
+
+jobs:
+  run-linguist:
+    name: Run Linguist
+    runs-on: ubuntu-latest
+    steps:
+    # - name: Checkout Linguist
+    #   uses: actions/checkout@v4
+    #   with:
+    #     name: '${{ inputs.repo }}'
+    #     ref: refs/heads/release
+    # - name: Test Linguist
+    #   run: |
+    #     cd github-linguist
+    #     bundle exec rake test
+    #     cd ..
+    #   shell: bash
+    - name: Install Linguist
+      run: |
+        gem install github-linguist
+      shell: bash    
+    - name: Checkout Repo
+          uses: actions/checkout@v4
+      with:
+        name: '${{ inputs.repo }}'
+        ref: refs/heads/release
+    - name: Install dependency
+      run: |
+        x = {what appears after the / inside inputs.repo}
+        cd '${{ x }}'
+        github-linguist
