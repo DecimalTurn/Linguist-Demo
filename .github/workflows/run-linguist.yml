@@ -3,7 +3,7 @@ name: Run Linguist
 on: workflow_dispatch
 
 env:
-  REPO: Org1/Repo1  # Define the repository here
+  REPO: pulibrary/ExcelAlmaLookup  # Define the repository here
   OPTIONS: ''       # Define the options for Linguist here
 
 jobs:
