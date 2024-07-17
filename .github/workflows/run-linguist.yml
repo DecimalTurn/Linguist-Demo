@@ -19,7 +19,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ env.REPO }}
-          ref: refs/heads/release
 
       - name: Run Linguist
         run: |
