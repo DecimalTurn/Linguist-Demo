@@ -23,11 +23,7 @@ jobs:
           repository: ${{ env.REPO }}
 
       - name: Run Linguist
-        run: |
-          repo_name=$(basename ${{ env.REPO }})
-          ls
-          cd $repo_name
-          github-linguist ${{ env.OPTIONS }}
+        run: github-linguist ${{ env.OPTIONS }}
         shell: bash
 
 
