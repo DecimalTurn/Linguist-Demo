@@ -1,3 +1,7 @@
+# TODO:
+# Try to run in Docker: https://github.com/github-linguist/linguist#docker
+
+
 name: Run Linguist
 
 on: workflow_dispatch
