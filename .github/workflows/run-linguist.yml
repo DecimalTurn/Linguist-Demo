@@ -6,6 +6,8 @@ env:
   REPO: pulibrary/ExcelAlmaLookup  # Define the repository here
   OPTIONS: ''       # Define the options for Linguist here
 
+# other to check: mckryton/senfgurke
+
 jobs:
   run-linguist:
     name: Run Linguist
@@ -23,6 +25,7 @@ jobs:
       - name: Run Linguist
         run: |
           repo_name=$(basename ${{ env.REPO }})
+          ls
           cd $repo_name
           github-linguist ${{ env.OPTIONS }}
         shell: bash
