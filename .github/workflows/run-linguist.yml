@@ -16,19 +16,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Linguist
-        run: |
-          gem install github-linguist
+        run: gem install github-linguist
         shell: bash    
+
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          name: '${{ inputs.repo }}'
+          repository: ${{ inputs.repo }}
           ref: refs/heads/release
-      - name: Install dependency
+
+      - name: Run Linguist
         run: |
-          x = {what appears after the / inside inputs.repo}
-          cd '${{ x }}'
-          github-linguist
+          repo_name=$(basename ${{ inputs.repo }})
+          cd $repo_name
+          github-linguist ${{ inputs.options }}
+        shell: bash
 
     # - name: Checkout Linguist
     #   uses: actions/checkout@v4
