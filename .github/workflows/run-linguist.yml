@@ -20,7 +20,7 @@ jobs:
           gem install github-linguist
         shell: bash    
       - name: Checkout Repo
-            uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           name: '${{ inputs.repo }}'
           ref: refs/heads/release
