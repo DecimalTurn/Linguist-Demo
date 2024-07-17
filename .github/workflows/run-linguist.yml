@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Linguist
-        run: gem install github-linguist
+        run: sudo gem install github-linguist
         shell: bash    
 
       - name: Checkout Repo
