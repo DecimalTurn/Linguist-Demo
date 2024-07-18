@@ -1,6 +1,8 @@
+#################################################################################
 # TODO:
-# Try to run in Docker: https://github.com/github-linguist/linguist#docker
-
+#################################################################################
+# Try to run in Docker?: https://github.com/github-linguist/linguist#docker
+# Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
 
 name: Run Linguist
 
@@ -15,6 +17,7 @@ jobs:
     name: Run Linguist
     runs-on: ubuntu-latest
     steps:
+        
       - name: Install Linguist
         run: sudo gem install github-linguist
         shell: bash    
