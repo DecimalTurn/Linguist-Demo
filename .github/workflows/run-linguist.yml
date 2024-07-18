@@ -15,9 +15,15 @@ jobs:
     name: Run Linguist
     runs-on: ubuntu-latest
     steps:
-      - name: Install Linguist
-        run: sudo gem install github-linguist
-        shell: bash    
+      - name: Get Linguist package
+        uses: awalsh128/cache-apt-pkgs-action@a6c3917cc929dd0345bfb2d3feaf9101823370ad #v1.4.2
+        with:
+          packages: Linguist
+          version: 1.0
+      
+     # - name: Install Linguist
+     #   run: sudo gem install github-linguist
+     #   shell: bash    
 
       - name: Checkout Repo
         uses: actions/checkout@v4
