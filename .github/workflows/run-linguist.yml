@@ -5,6 +5,8 @@
 # Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
   # Seems like the tutorial above is for installing dependencies to an actual ruby project. What we want it to save the installed gem with its dependencies as a whole
   # Let's look at : https://stackoverflow.com/questions/3408868/where-do-gems-install
+# See also: https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+  # This seems to be more about caching the output of the bundler. Can we just add the bundler to the project?
 
 name: Run Linguist
 
