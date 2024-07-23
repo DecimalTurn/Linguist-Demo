@@ -3,6 +3,8 @@
 #################################################################################
 # Try to run in Docker?: https://github.com/github-linguist/linguist#docker
 # Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
+  # Seems like the tutorial above is for installing dependencies to an actual ruby project. What we want it to save the installed gem with its dependencies as a whole
+  # Let's look at : https://stackoverflow.com/questions/3408868/where-do-gems-install
 
 name: Run Linguist
 
@@ -19,7 +21,9 @@ jobs:
     steps:
         
       - name: Install Linguist
-        run: sudo gem install github-linguist
+        run: |
+          sudo gem install github-linguist
+          sudo gem env
         shell: bash    
 
       - name: Checkout Repo
