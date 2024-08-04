@@ -50,7 +50,11 @@ jobs:
         id: cache-gems
         uses: actions/cache@v3
         with:
-          path: /var/lib/gems/3.0.0
+          path: |
+            /var/lib/gems/3.0.0
+            /root/.local/share/gem/ruby/3.0.0
+            /usr/local/lib/ruby/gems/3.0.0
+            /usr/lib/ruby/gems/3.0.0
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
@@ -76,6 +80,8 @@ jobs:
           echo ${{ env.REPO }}
           github-linguist ${{ env.OPTIONS }}
         shell: bash
+        env:
+          PATH: /var/lib/gems/3.0.0/bin:/root/.local/share/gem/ruby/3.0.0/bin:/usr/local/lib/ruby/gems/3.0.0/bin:/usr/lib/ruby/gems/3.0.0/bin:$PATH
 
 
     # - name: Checkout Linguist
