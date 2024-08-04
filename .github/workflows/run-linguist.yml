@@ -46,7 +46,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Tentative:
+      - name: Install Linguist
+        run: |
+          sudo gem install github-linguist
+          sudo gem env
+        shell: bash
+
       - name: Setup Cache for Gems
         id: cache-gems
         uses: actions/cache@v3
@@ -55,12 +60,6 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      
-      - name: Install Linguist
-        run: |
-          sudo gem install github-linguist
-          sudo gem env
-        shell: bash    
 
       - name: Checkout Repo
         uses: actions/checkout@v4
