@@ -45,7 +45,17 @@ jobs:
     name: Run Linguist
     runs-on: ubuntu-latest
     steps:
-        
+
+      # Tentative:
+      - name: Setup Cache for Gems
+        id: cache-gems
+        uses: actions/cache@v3
+        with:
+          path: /var/lib/gems/3.0.0
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      
       - name: Install Linguist
         run: |
           sudo gem install github-linguist
