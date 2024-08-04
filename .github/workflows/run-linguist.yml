@@ -46,12 +46,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Install Linguist
-        run: |
-          sudo gem install github-linguist
-          sudo gem env
-        shell: bash
-
       - name: Setup Cache for Gems
         id: cache-gems
         uses: actions/cache@v3
@@ -60,6 +54,16 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
+
+      - name: Install Linguist
+        run: |
+          if [ -z "$(gem list -i github-linguist)" ]; then
+            echo "github-linguist not found in cache, installing..."
+            sudo gem install github-linguist
+          else
+            echo "github-linguist found in cache."
+          fi
+        shell: bash
 
       - name: Checkout Repo
         uses: actions/checkout@v4
