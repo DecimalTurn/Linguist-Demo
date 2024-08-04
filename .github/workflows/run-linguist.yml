@@ -62,6 +62,7 @@ jobs:
             sudo gem install github-linguist
           else
             echo "github-linguist found in cache."
+            echo 'export PATH="$PATH:/var/lib/gems/3.0.0/bin"' >> $GITHUB_ENV
           fi
         shell: bash
 
