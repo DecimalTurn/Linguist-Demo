@@ -50,8 +50,10 @@ jobs:
     - name: Run Linguist
       run: |
         cd ..
+        cd /Linguist-Demo
+        pwd
         ls
         echo ${{ env.REPO }}
         #github-linguist ${{ env.OPTIONS }}
-        bundle exec github-linguist ${{ env.OPTIONS }}
+        bundle exec github-linguist ../PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
       shell: bash
