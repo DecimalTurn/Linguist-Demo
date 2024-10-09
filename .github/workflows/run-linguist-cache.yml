@@ -42,19 +42,14 @@ jobs:
 
       shell: bash
 
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-      with:
-        repository: ${{ env.REPO }}
+    - name: Clone repo
+      run: |
+        mkdir repo
+        cd repo
+        git clone "https://github.com/${{ env.REPO }}"
 
     - name: Run Linguist
       run: |
-        cd ..
-        ls
-        cd Linguist-Demo
-        pwd
-        ls
-        echo ${{ env.REPO }}
         #github-linguist ${{ env.OPTIONS }}
-        bundle exec github-linguist ../PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
+        bundle exec bin/github-linguist repo/PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
       shell: bash
