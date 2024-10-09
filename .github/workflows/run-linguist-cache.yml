@@ -32,7 +32,10 @@ jobs:
         bundler-cache: true
 
     - name: Add bin to PATH
-      run: echo "$(bundle info github-linguist --path)/bin" >> $GITHUB_PATH
+      run: |
+        echo "$(bundle info github-linguist --path)/bin" >> $GITHUB_PATH
+        export PATH="$(bundle info github-linguist --path)/bin:$PATH"
+      shell: bash
 
     - name: Checkout Repo
       uses: actions/checkout@v4
