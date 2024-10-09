@@ -50,6 +50,6 @@ jobs:
 
     - name: Run Linguist
       run: |
-        #github-linguist ${{ env.OPTIONS }}
-        bundle exec github-linguist repo/PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
+        github-linguist repo/PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
+        #bundle exec github-linguist repo/PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
       shell: bash
