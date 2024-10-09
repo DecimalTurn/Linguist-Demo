@@ -33,8 +33,11 @@ jobs:
 
     - name: Add bin to PATH
       run: |
-        echo "$(bundle info github-linguist --path)/bin" >> $GITHUB_PATH
-        export PATH="$(bundle info github-linguist --path)/bin:$PATH"
+        BIN_PATH="$(bundle info github-linguist --path)/bin"
+        echo "BIN_PATH: $BIN_PATH"
+        echo "$BIN_PATH" >> $GITHUB_PATH
+        echo "Updated PATH: $PATH"
+        ls "$BIN_PATH"  # List the contents of the bin directory to ensure the command exists
       shell: bash
 
     - name: Checkout Repo
