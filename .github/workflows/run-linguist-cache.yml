@@ -3,7 +3,7 @@
 #################################################################################
 # Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
 
-name: Run Linguist
+name: Run Linguist (with caching)
 
 on: workflow_dispatch
 
