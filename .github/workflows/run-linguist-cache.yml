@@ -39,8 +39,7 @@ jobs:
     #     echo "Updated GITHUB_PATH: $GITHUB_PATH"
     #     echo "Updated PATH: $PATH"
     #     ls "$BIN_PATH"
-
-      shell: bash
+    #  shell: bash
 
     - name: Clone repo
       run: |
