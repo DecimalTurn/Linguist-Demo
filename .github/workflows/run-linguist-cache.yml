@@ -16,7 +16,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    
+
     - uses: actions/checkout@v4
 
     - name: Bash
@@ -30,6 +30,9 @@ jobs:
         ruby-version: 3.2
         # runs 'bundle install' and caches installed gems automatically
         bundler-cache: true
+
+    - name: Add bin to PATH
+      run: echo "$(bundle info github-linguist --path)/bin" >> $GITHUB_PATH
 
     - name: Checkout Repo
       uses: actions/checkout@v4
