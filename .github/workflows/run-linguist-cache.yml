@@ -46,6 +46,7 @@ jobs:
         mkdir repo
         cd repo
         git clone "https://github.com/${{ env.REPO }}"
+      shell: bash
 
     - name: Run Linguist
       run: |
