@@ -37,7 +37,8 @@ jobs:
         echo "BIN_PATH: $BIN_PATH"
         echo "$BIN_PATH" >> $GITHUB_PATH
         echo "Updated PATH: $PATH"
-        ls "$BIN_PATH"  # List the contents of the bin directory to ensure the command exists
+        ls "$BIN_PATH"
+
       shell: bash
 
     - name: Checkout Repo
@@ -48,5 +49,6 @@ jobs:
     - name: Run Linguist
       run: |
         echo ${{ env.REPO }}
-        github-linguist ${{ env.OPTIONS }}
+        #github-linguist ${{ env.OPTIONS }}
+        bundle exec bin/github-linguist ${{ env.OPTIONS }}
       shell: bash
