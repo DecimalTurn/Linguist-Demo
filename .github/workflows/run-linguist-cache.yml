@@ -1,0 +1,37 @@
+#################################################################################
+# TODO:
+#################################################################################
+# Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
+
+name: Run Linguist
+
+on: workflow_dispatch
+
+env:
+  REPO: PuzzleTakX/PuzzleTak_AudioPlayer  # Define the repository here
+  OPTIONS: '--breakdown'       # Define the options for Linguist here
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        # Not needed with a .ruby-version file
+        ruby-version: 3.2
+        # runs 'bundle install' and caches installed gems automatically
+        bundler-cache: true
+
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ env.REPO }}
+
+    - name: Run Linguist
+      run: |
+        echo ${{ env.REPO }}
+        github-linguist ${{ env.OPTIONS }}
+      shell: bash
