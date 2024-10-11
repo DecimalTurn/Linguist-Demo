@@ -4,7 +4,6 @@ import argparse
 import sys
 import subprocess
 import ghlinguist as ghl
-import requests
 
 
 def parse_arguments():
