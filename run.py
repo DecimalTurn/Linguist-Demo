@@ -8,7 +8,7 @@ import requests
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Get path information")
     parser.add_argument('path', type=str, help='Path name')
     return parser.parse_args()
 
@@ -19,6 +19,7 @@ def main(full_path):
 
 
 if __name__ == "__main__":
+    print("Starting")
     args = parse_arguments()
     print(args.path)
     main(args.path)
