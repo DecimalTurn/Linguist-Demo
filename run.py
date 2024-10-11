@@ -15,7 +15,14 @@ def parse_arguments():
 def main(full_path):
     # linguist_version = subprocess.run(["github-linguist", "--version"], capture_output=True).stdout.decode('utf-8').strip()
     #Use ghlinguist to run linguist on the repo (need to supply the full path not just the name)
-    return ghl.linguist(full_path, True)
+    lang = ghl.linguist(full_path, True)
+    
+    if lang is None:
+        print(f"Failed to determine the language of repo {slug}")
+        problem_encountered = True
+        return
+        
+    print(f"Output: {lang}")
 
 
 if __name__ == "__main__":
