@@ -8,7 +8,7 @@ import requests
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser())
+    parser = argparse.ArgumentParser()
     parser.add_argument('path', type=str, help='Path name')
     return parser.parse_args()
 
