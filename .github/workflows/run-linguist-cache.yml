@@ -50,7 +50,6 @@ jobs:
 
     - name: Run Linguist
       run: |
-        #github-linguist repo/PuzzleTak_AudioPlayer ${{ env.OPTIONS }}
         REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
         bundle exec github-linguist "repo/$REPO_NAME" {{ env.OPTIONS }}
       shell: bash
