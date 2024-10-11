@@ -51,5 +51,5 @@ jobs:
     - name: Run Linguist
       run: |
         REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
-        bundle exec github-linguist repo/$REPO_NAME {{ env.OPTIONS }}
+        bundle exec github-linguist repo/$REPO_NAME $OPTIONS
       shell: bash
