@@ -5,10 +5,15 @@
 
 name: Run Linguist (with caching and python)
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "The URL of the repo."
+        required: true
 
 env:
-  REPO: thislambert/AccessGitIntegration  # Define the repository here
+  #REPO: thislambert/AccessGitIntegration  # Define the repository here
   OPTIONS: '--breakdown'       # Define the options for Linguist here
 
 
@@ -45,7 +50,7 @@ jobs:
       run: |
         mkdir repo
         cd repo
-        git clone "https://github.com/${{ env.REPO }}"
+        git clone "https://github.com/${{ github.event.inputs.repo }}"
       shell: bash
 
     # - name: Run Linguist
@@ -72,7 +77,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Run Python script
       run: |
-        REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
+        REPO_NAME=$(echo "${{ github.event.inputs.repo }}" | cut -d'/' -f2)
         python run.py "repo/$REPO_NAME"
       shell: bash
       env:
