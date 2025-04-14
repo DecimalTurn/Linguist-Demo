@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       repo:
-        description: "The URL of the repo."
+        description: "The slug of the repo."
         required: true
 
 env:
