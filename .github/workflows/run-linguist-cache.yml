@@ -5,10 +5,14 @@
 
 name: Run Linguist (with caching)
 
-on: workflow_dispatch
-
+on: 
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "The slug of the repo."
+        required: true
+        
 env:
-  REPO: DualBrain/QB64  # Define the repository here
   OPTIONS: '--breakdown'       # Define the options for Linguist here
 
 
@@ -45,11 +49,11 @@ jobs:
       run: |
         mkdir repo
         cd repo
-        git clone "https://github.com/${{ env.REPO }}"
+        git clone "https://github.com/${{ github.event.inputs.repo }}"
       shell: bash
 
     - name: Run Linguist
       run: |
-        REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
+        REPO_NAME=$(echo "${{ github.event.inputs.repo }}" | cut -d'/' -f2)
         bundle exec github-linguist repo/$REPO_NAME $OPTIONS
       shell: bash
