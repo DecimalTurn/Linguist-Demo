@@ -34,10 +34,14 @@
 
 name: Run Linguist
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "The slug of the repo."
+        required: true
 
 env:
-  REPO: PuzzleTakX/PuzzleTak_AudioPlayer  # Define the repository here
   OPTIONS: '--breakdown'       # Define the options for Linguist here
 
 jobs:
@@ -55,11 +59,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.REPO }}
+          repository: ${{ github.event.inputs.repo }}
 
       - name: Run Linguist
         run: |
-          echo ${{ env.REPO }}
+          echo ${{ github.event.inputs.repo }}
           github-linguist ${{ env.OPTIONS }}
         shell: bash
 
