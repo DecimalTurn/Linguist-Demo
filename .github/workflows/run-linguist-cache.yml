@@ -1,8 +1,3 @@
-#################################################################################
-# TODO:
-#################################################################################
-# Use the cache to load gem faster: https://docs.knapsackpro.com/2021/how-to-load-ruby-gems-from-cache-on-github-actions
-
 name: Run Linguist (with caching)
 
 on: 
@@ -14,7 +9,6 @@ on:
         
 env:
   OPTIONS: '--breakdown'       # Define the options for Linguist here
-
 
 jobs:
   test:
@@ -34,16 +28,6 @@ jobs:
         ruby-version: 3.2
         # runs 'bundle install' and caches installed gems automatically
         bundler-cache: true
-
-    # - name: Add bin to PATH
-    #   run: |
-    #     BIN_PATH="$(bundle info github-linguist --path)/bin"
-    #     echo "BIN_PATH: $BIN_PATH"
-    #     echo "$BIN_PATH" >> $GITHUB_PATH
-    #     echo "Updated GITHUB_PATH: $GITHUB_PATH"
-    #     echo "Updated PATH: $PATH"
-    #     ls "$BIN_PATH"
-    #   shell: bash
 
     - name: Clone repo
       run: |
