@@ -1,4 +1,4 @@
-name: Run Linguist (with caching)
+name: Run Linguist
 
 on: 
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
         cd repo
         git clone "https://github.com/${{ env.REPO }}"
       shell: bash    
-      
+
     - name: Run Linguist
       run: |
         REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
