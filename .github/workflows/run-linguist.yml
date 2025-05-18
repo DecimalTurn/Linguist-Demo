@@ -14,6 +14,21 @@ jobs:
   run-linguist:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Validate Repo Input
+      run: |
+        REPO=${{ github.event.inputs.repo }}
+        # Remove optional prefix
+        REPO=$(echo "$REPO" | sed 's|^https://github.com/||')
+        
+        # Validate format: must be in the form "owner/repo"
+        if ! echo "$REPO" | grep -Eq '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
+          echo "Error: Invalid repository slug format. Expected 'owner/repo'." >&2
+          exit 1
+        fi
+
+        echo "REPO=$REPO" >> $GITHUB_ENV
+      shell: bash
 
     - name: Checkout # This is needed to get bundle exec to run properly
       uses: actions/checkout@v4
@@ -25,14 +40,6 @@ jobs:
       with:
         ruby-version: 3.2 # Alternatively, can be specified with a .ruby-version file
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically    
-    
-    - name: Validate Repo Input
-      run: |
-        REPO=${{ github.event.inputs.repo }}
-        # Remove https://github.com/ if present
-        REPO=$(echo $REPO | sed 's|^https://github.com/||')
-        echo "REPO=$REPO" >> $GITHUB_ENV
-      shell: bash
 
     - name: Clone Repo
       run: |
