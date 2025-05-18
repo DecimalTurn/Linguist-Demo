@@ -15,7 +15,7 @@ For the slug, it is made of the User_Name (owner) and Repo_Name (name of the rep
 
 Once you’ve started the workflow, it may take a few seconds to appear on the page—you can refresh to see it show up. Click on it to view the progress. 
 
-The results you are looking for will be in the "Run Linguist" step.
+The results you are looking for will be in the "Run Linguist" step. Your first ever run should take 1-2 min, but with caching, the ones after should only take a few seconds for reasonably sized repos.
 
 ![image](https://github.com/user-attachments/assets/1b3d20ad-a0ae-427f-a4ab-d3ad8808ed20)
 
