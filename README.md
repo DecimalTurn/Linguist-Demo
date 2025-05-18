@@ -6,7 +6,7 @@ This repo contains a GitHub Action that can be run to check the [`github-linguis
 
 To try the demo yourself, follow these steps:
 
-- Create a new repo by clicking **`Use this template`** in the top-right corner of the screen (you can even make it private if you prefer).
+- Create a new repo by clicking **`Use this template`** then **`Create a new repository`** in the top-right corner of the screen (you can even make it private if you prefer).
 - Start the workflow to run github-linguist (see image below).
 
 ![image](https://github.com/user-attachments/assets/288ad401-74e0-451b-806d-babfe7b72743)
