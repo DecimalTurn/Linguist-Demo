@@ -19,17 +19,25 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.2 # Alternatively, can be specified with a .ruby-version file
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically    
+    
+    - name: Validate Repo Input
+      run: |
+        REPO=${{ github.event.inputs.repo }}
+        # Remove https://github.com/ if present
+        REPO=$(echo $REPO | sed 's|^https://github.com/||')
+        echo "REPO=$REPO" >> $GITHUB_ENV
+      shell: bash
 
-    - name: Clone repo
+    - name: Clone Repo
       run: |
         mkdir repo
         cd repo
-        git clone "https://github.com/${{ github.event.inputs.repo }}"
-      shell: bash
-
+        git clone "https://github.com/${{ env.REPO }}"
+      shell: bash    
+      
     - name: Run Linguist
       run: |
-        REPO_NAME=$(echo "${{ github.event.inputs.repo }}" | cut -d'/' -f2)
+        REPO_NAME=$(echo "${{ env.REPO }}" | cut -d'/' -f2)
         bundle exec github-linguist repo/$REPO_NAME $OPTIONS
       shell: bash
