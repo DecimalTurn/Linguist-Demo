@@ -11,7 +11,7 @@ To try the demo yourself, follow these steps:
 
 ![image](https://github.com/user-attachments/assets/288ad401-74e0-451b-806d-babfe7b72743)
 
-For the slug, it is made of the User_Name (owner) and Repo_Name (name of the repo name. You can also just copy paste the URL of the repo there and the excess URL part at the start will be ignored.
+For the slug, it is made of the User_Name (owner) and Repo_Name (name of the repo). You can also just copy paste the URL of the repo there and the excess URL part at the start will be ignored.
 
 Once you’ve started the workflow, it may take a few seconds to appear on the page—you can refresh to see it show up. Click on it to view the progress. 
 
