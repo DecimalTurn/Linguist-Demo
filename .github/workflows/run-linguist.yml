@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: Checkout # This is needed to get bundle exec to run properly
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1 # Shallow clone to speed up the process
+        
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
