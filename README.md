@@ -1,3 +1,3 @@
 # Linguist-Demo
 
-This repo contains an action that can be run to check the github-linguist output for certain repos.
+This repo contains a GitHub Action that can be run to check the `github-linguist` output for any public repo.
