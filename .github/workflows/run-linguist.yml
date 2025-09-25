@@ -6,9 +6,19 @@ on:
       repo:
         description: "The slug of the repo."
         required: true
+      breakdown:
+        type: boolean
+        description: "Enable --breakdown"
+        required: false
+        default: true
+      strategies:
+        type: boolean
+        description: "Enable --strategies"
+        required: false
+        default: false
         
 env:
-  OPTIONS: '--breakdown'       # Define the options for Linguist here
+  OPTIONS: '' # Will be set dynamically
 
 jobs:
   run-linguist:
@@ -28,6 +38,16 @@ jobs:
         fi
 
         echo "REPO=$REPO" >> $GITHUB_ENV
+
+        # Set OPTIONS based on inputs
+        OPTIONS=""
+        if [ "${{ github.event.inputs.breakdown }}" = "true" ]; then
+          OPTIONS="$OPTIONS --breakdown"
+        fi
+        if [ "${{ github.event.inputs.strategies }}" = "true" ]; then
+          OPTIONS="$OPTIONS --strategies"
+        fi
+        echo "OPTIONS=$OPTIONS" >> $GITHUB_ENV
       shell: bash
 
     - name: Checkout # This is needed to get bundle exec to run properly
